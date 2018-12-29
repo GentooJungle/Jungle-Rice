@@ -1,0 +1,312 @@
+#=================================
+#---------- Set Mod-Key ----------
+#=================================
+
+set $mod Mod4
+
+#=================================
+#---------- Set Font -------------
+#=================================
+
+font pango:DejaVu Sans Mono 8
+
+#=================================
+#---------- Set Gaps -------------
+#=================================
+
+# Configure Gaps
+for_window [class="^.*"] border pixel 0
+gaps inner 10
+gaps outer 5
+smart_gaps on
+
+#=================================
+#---------- Wallpaper ------------
+#=================================
+
+exec --no-startup-id feh --bg-scale /home/j3rk/Images/Wallpaper/GeoMountains.jpg
+
+#=================================
+#---------- Polybar --------------
+#=================================
+
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+#=================================
+#---------- Terminal -------------
+#=================================
+
+bindsym $mod+Return exec urxvt
+
+#=================================
+#----------- dMenu --------------- 
+#=================================
+
+bindsym $mod+d exec dmenu_run -b
+
+#=================================
+#------- App Keybindings ---------
+#=================================
+
+# start google-chrome
+bindsym $mod+g exec google-chrome-stable
+
+#=================================
+#---- Application Assignment -----
+#=================================
+
+# Assign Specific Applications to Specific Workspaces
+assign [class="Slack"] $ws10
+assign [class="discord"] $ws10
+for_window [class="Spotify"] move to workspace $ws9
+assign [class="remmina"] $ws8
+assign [class="TeamViewer"] $ws5
+
+#=================================
+#---- Auto-start Applications ----
+#=================================
+
+# Automatically Start Applications On Startup
+exec slack
+exec discord
+exec spotify
+exec remmina
+
+#=================================
+#--------- Window Focus ----------
+#=================================
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+#=================================
+#---------- Movement -------------
+#=================================
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+#=================================
+#--------- Resize Window ---------
+#=================================
+
+# resizing on the fly
+bindsym $mod+Ctrl+u resize shrink width 2 px or 2 ppt
+bindsym $mod+Ctrl+i resize grow height 2 px or 2 ppt
+bindsym $mod+Ctrl+o resize shrink height 2 px or 2 ppt
+bindsym $mod+Ctrl+p resize grow width 2 px or 2 ppt
+
+
+# default resizing settings
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+#=================================
+#-------- Workspace Names --------
+#=================================
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+#=================================
+#----- Workspace Assignment ------
+#=================================
+
+# Automatically Assign Work Spaces to a Specific Screen
+workspace 1 output LVDS1
+workspace 2 output LVDS1
+workspace 3 output LVDS1
+workspace 4 output LVDS1
+workspace 5 output LVDS1
+
+workspace 6 output HDMI2
+workspace 7 output HDMI2
+workspace 8 output HDMI2
+workspace 9 output HDMI2
+workspace 10 output HDMI2
+
+workspace 6 output VGA1
+workspace 7 output VGA1
+workspace 8 output VGA1
+workspace 9 output VGA1
+workspace 10 output VGA1
+
+#=================================
+#----- Switching Workspaces ------
+#=================================
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# switch to workspace with keypad
+bindsym $mod+Control+Mod2+KP_1 workspace 1
+bindsym $mod+Control+Mod2+KP_2 workspace 2
+bindsym $mod+Control+Mod2+KP_3 workspace 3
+bindsym $mod+Control+Mod2+KP_4 workspace 4
+bindsym $mod+Control+Mod2+KP_5 workspace 5
+bindsym $mod+Control+Mod2+KP_6 workspace 6
+bindsym $mod+Control+Mod2+KP_7 workspace 7
+bindsym $mod+Control+Mod2+KP_8 workspace 8
+bindsym $mod+Control+Mod2+KP_9 workspace 9
+bindsym $mod+Control+Mod2+KP_0 workspace 10
+
+#=================================
+#----- Alt-Tab Functionality -----
+#=================================
+
+# enable Alt+Tab Functionality
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+
+#=================================
+#------ Contianer Movement -------
+#=================================
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# move focused container to workspace with numpad
+bindsym $mod+Shift+Mod2+KP_End move container to workspace 1
+bindsym $mod+Shift+Mod2+KP_Down move container to workspace 2
+bindsym $mod+Shift+Mod2+KP_Next move container to workspace 3
+bindsym $mod+Shift+Mod2+KP_Left move container to workspace 4
+bindsym $mod+Shift+Mod2+KP_Begin move container to workspace 5
+bindsym $mod+Shift+Mod2+KP_Right move container to workspace 6
+bindsym $mod+Shift+Mod2+KP_Home move container to workspace 7
+bindsym $mod+Shift+Mod2+KP_Up move container to workspace 8
+bindsym $mod+Shift+Mod2+KP_Prior move container to workspace 9
+bindsym $mod+Shift+Mod2+KP_Insert move container to workspace 10
+
+#================================
+#---------- Scratchpad ----------
+#================================
+
+# Make the currently focused window a scratchpad
+bindsym $mod+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+plus scratchpad show
+
+#=================================
+#----------- Reload i3 -----------
+#=================================
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+#=================================
+#------- Bar Configuration -------
+#=================================
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+# bar {
+#        tray_output none
+#	position top
+#	status_command i3status
+# }
