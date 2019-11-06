@@ -16,7 +16,7 @@ fi
 
 
 # Put your fun stuff here.
-figlet "Welcome to the Gentoo Jungle!"
+figlet "Welcome to the Gentoo Jungle !"
 neofetch
 
 # Needed for Pywal
